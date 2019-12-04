@@ -1,7 +1,6 @@
 const express = require("express");
 const http = require("http");
 const bodyParser = require("body-parser");
-const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 // const router = require("./router");
@@ -9,18 +8,24 @@ const cors = require("cors");
 // DB Setup
 mongoose.connect('mongodb://localhost/TYPE', { useNewUrlParser: true })
 
+const app = express();
+
 // set up cors to allow us to accept requests from our client
-app.use(
-  cors({
-    origin: "http://localhost:3000", // allow to server to accept request from different origin
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  })
-);
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+
+  next();
+});
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: true
 }))
+
+const mainRoutes = require('./routes/main')
+app.use('/', mainRoutes)
 
 // router(app);
 
@@ -38,7 +43,7 @@ app.use(bodyParser.urlencoded({
 // }
 
 // Server Setup
-const port = process.env.PORT || 5000;
-const server = http.createServer(app);
-server.listen(port);
-console.log("Server listening on:", port);
+
+app.listen(8000, () => {
+  console.log('Node.js listening on port ' + 8000)
+})
