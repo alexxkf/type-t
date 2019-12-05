@@ -10,7 +10,6 @@ function App() {
     <BrowserRouter>
       <div className="container" style={{ marginTop: '165px' }} />
       <Switch>
-        <Route exact path={'/'} component={Navbar} />
         <Route exact path={'/'} component={Graph} />
       </Switch>
     </BrowserRouter>

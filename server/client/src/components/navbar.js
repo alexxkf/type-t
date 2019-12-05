@@ -25,7 +25,7 @@ class Navbar extends Component {
                 <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
               </li>
             </ul>
-            <button type="button" class="btn float-right btn-outline-secondary">Add New Glucose Level</button>
+            <button type="button" className="btn float-right btn-outline-secondary">Add New Glucose Level</button>
           </div>
         </nav>
       </div>
