@@ -1,12 +1,14 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const carbCountSchema = require('./carbCount').schema
 
 const UserSchema = new Schema({
-  value: Number,
+  bglValue: Number,
   category: String,
   date: Date,
   time: Date,
-  insulinNotes: String,
+  insulinTaken: Number,
+  carbCount: [{ type: Schema.Types.ObjectId, ref: 'carb' }]
 })
 
 const User = mongoose.model('user', UserSchema)

@@ -18,7 +18,6 @@ app.use(bodyParser.json())
 const mainRoutes = require('./routes/main')
 app.use('/', mainRoutes)
 
-
 //Server Setup
 const port = process.env.PORT || 8000
 const server = http.createServer(app)
