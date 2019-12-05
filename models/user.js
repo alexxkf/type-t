@@ -6,7 +6,7 @@ const UserSchema = new Schema({
   category: String,
   date: Date,
   time: Date,
-  insulinTaken: Number,
+  insulinNotes: String,
 })
 
 const User = mongoose.model('user', UserSchema)
