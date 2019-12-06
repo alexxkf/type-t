@@ -9,6 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="container" style={{ marginTop: '165px' }} />
+      <Route path={'/'} component={Navbar} />
       <Switch>
         <Route exact path={'/'} component={Graph} />
       </Switch>

@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #F9F7EB;
+  font-family: "Merriweather", serif;
+  color: #333;
+}
+
+#chart-container {
+  height: 600px;
+}
+
+a {
+  color: #555;
+}
+
+.footnote {
+  justify-content: center;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+
+
