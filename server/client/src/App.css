@@ -45,6 +45,7 @@ body {
 
 #chart-container {
   height: 600px;
+  justify-content: center;
 }
 
 a {
@@ -56,6 +57,5 @@ a {
   font-size: 13px;
   margin-top: 10px;
 }
-
 
 
