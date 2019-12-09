@@ -3,6 +3,7 @@ import Navbar from './components/navbar'
 import Graph from './components/graph'
 import { Switch, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 
 
 class App extends Component {

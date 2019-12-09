@@ -6,13 +6,13 @@ import Bubbles from './bubbles'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchData } from '../actions'
-
-// componentDidMount() {
-//   this.props.fetchData()
-// }
+import './graph.css'
 
 
 class Graph extends Component {
+  componentDidMount() {
+    this.props.fetchData()
+  }
   constructor() {
     super()
 
@@ -20,22 +20,31 @@ class Graph extends Component {
       labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
       datasets: [
         {
-          label: 'mg/dL',
+          label: 'highest',
           fill: false,
           lineTension: 0.5,
-          backgroundColor: 'rgba(75,192,192,1)',
-          borderColor: 'rgba(0,0,0,1)',
+          backgroundColor: 'white',
+          borderColor: '#FFCBA0',
           borderWidth: 2,
-          data: [65, 59, 80, 81, 56, 45, 23, 97, 23, 75, 23, 43, 43, 75, 45, 54, 23, 97, 54]
+          data: [250, 345, 213, 432, 178, 333, 234]
         },
         {
-          label: 'units/mL',
+          label: 'lowest',
           fill: false,
           lineTension: 0.5,
-          backgroundColor: 'rgba(75,192,192,1)',
-          borderColor: 'rgba(0,0,0,1)',
+          backgroundColor: 'white',
+          borderColor: '#7DAFB8',
           borderWidth: 2,
-          data: [34, 76, 12, 45, 23, 43, 54, 87, 32, 32, 34, 23, 43, 76, 98, 43, 23, 34, 45]
+          data: [45, 123, 79, 45, 145, 88, 54]
+        },
+        {
+          label: 'average',
+          fill: false,
+          lineTension: 0.5,
+          backgroundColor: 'white',
+          borderColor: '#B5B0AC',
+          borderWidth: 2,
+          data: [234, 56, 111, 87, 54, 423, 75]
         }
       ]
     }
@@ -46,7 +55,7 @@ class Graph extends Component {
   render() {
     return (
       <div>
-        <div className="container" id="chart-container">
+        <div className="container graph-style" id="chart-container">
           <Line
             data={this.state}
             options={{
@@ -57,7 +66,7 @@ class Graph extends Component {
               },
               legend: {
                 display: true,
-                position: 'right'
+                position: 'top'
               }
             }}
           />

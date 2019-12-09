@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const FETCH_DATA = "fetch_data";
+export const SUBMIT_DATA = "submit_data"
 export const FETCH_CARBS = "fetch_carbs";
 
 const ROOT_URL = "http://localhost:8000/"
@@ -18,6 +19,19 @@ export function fetchData() {
     type: FETCH_DATA,
     payload: request
   }
+}
+
+export function submitData(values) {
+  const request = axios
+    .post(`${ROOT_URL}`, values)
+    .catch(function (error) {
+      console.log("error", error);
+    })
+  return {
+    type: SUBMIT_DATA,
+    payload: request
+  }
+
 }
 
 // export function fetchCarbs() {
