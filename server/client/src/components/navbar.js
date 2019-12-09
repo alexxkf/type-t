@@ -1,14 +1,21 @@
 import React, { Component } from "react";
 // import * as actions from "../actions/actions";
 import { connect } from "react-redux";
+import Modal from './modal';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
 class Navbar extends Component {
-  constructor() {
-    super()
-  }
+  constructor(props) {
+    super(props);
 
+    this.state = { isOpen: false };
+  }
+  toggleModal = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
 
   render() {
     return (
@@ -22,10 +29,17 @@ class Navbar extends Component {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item active">
-                <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
               </li>
             </ul>
           </div>
+          <button onClick={this.toggleModal}>
+            Add New Reading
+        </button>
+          <Modal show={this.state.isOpen}
+            onClose={this.toggleModal}>
+            `Here's some content for the modal`
+        </Modal>
         </nav>
       </div>
 
