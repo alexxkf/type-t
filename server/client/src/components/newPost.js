@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from "redux-form";
-import "../App.css";
 import { Button } from "react-bootstrap";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actions from '../actions/index';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./newPost.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class NewPost extends Component {
   constructor() {
@@ -39,35 +39,42 @@ class NewPost extends Component {
   }
 
   render() {
-    const { onSubmit } = this.props;
     return (
       <div>
-        <h4 className="text-center">Add New Reading</h4>
-        <div className="col-md-6 offset-md-3">
-          <div className="row">
+        <div className="row">
+          <div className="col-md-6 offset-md-3">
+            <h4 className="text-center">Add New Reading</h4>
             <form
               name="addPost"
               onSubmit={this.onSubmit}
               onKeyPress={this.handleKeyPress}
-              className="offset-md-4"
+              className="col-md-6 offset-md-3"
             >
               <input
                 label="BGL"
                 name="New BGL"
-                placeholder="Enter New Blood Glucose"
+                placeholder="Enter New BGL"
               />
+              <br>
+              </br>
+              <br>
+              </br>
               <DatePicker
                 type="text"
-                placeholder="Date"
+                placeholder="Entry Date"
                 selected={this.state.startDate}
                 onChange={this.handleChange}
                 style={{ 'text-align': 'center' }}
               />
+              <br>
+              </br>
+              <br>
+              </br>
+              <div>
+                <a href='/'><Button variant="outline-danger mr-2" size="sm">Cancel</Button></a>
+                <Button type="submit" variant="outline-info mr-2" size="sm">Submit</Button>
+              </div>
             </form>
-            <div>
-              <a href='/'><Button variant="outline-danger mr-2" size="sm">Cancel</Button></a>
-              <Button type="submit" variant="outline-info mr-2" size="sm">Submit</Button>
-            </div>
           </div>
         </div>
       </div>
@@ -84,4 +91,4 @@ const mapStateToProps = (state) => {
   return state
 }
 
-export default reduxForm({ form: 'questionNew' })(connect(mapStateToProps, mapDispatchToProps)(NewPost));
+export default (connect(mapStateToProps, mapDispatchToProps)(NewPost));
