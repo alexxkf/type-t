@@ -6,6 +6,7 @@ import Bubbles from './bubbles'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchData } from '../actions'
+import "chartjs-plugin-annotation";
 import './graph.css'
 
 
@@ -29,6 +30,18 @@ class Graph extends Component {
               legend: {
                 display: true,
                 position: 'top'
+              },
+              annotation: {
+                annotations: [{
+                  drawTime: "beforeDatasetsDraw",
+                  type: "box",
+                  xScaleID: "x-axis-0",
+                  yScaleID: "y-axis-0",
+                  borderWidth: 0,
+                  yMin: 70,
+                  yMax: 180,
+                  backgroundColor: 'rgba(60, 179, 113, 0.3)'
+                }]
               }
             }}
           />
