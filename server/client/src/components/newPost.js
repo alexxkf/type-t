@@ -53,7 +53,7 @@ class NewPost extends Component {
               />
             </Form.Group>
             <Form.Group controlId="formGroup">
-              <Form.Label>Today's Date: </Form.Label>
+              <Form.Label>Entry Date: </Form.Label>
               <DatePicker
                 type="text"
                 placeholder="Date"
@@ -62,7 +62,7 @@ class NewPost extends Component {
                 style={{ 'text-align': 'center' }}
               />
             </Form.Group>
-            <Form.Group controlId="formGroup">
+            {/* <Form.Group controlId="formGroup">
               <Form.Label>Food: </Form.Label>
               <Form.Control
                 size="sm"
@@ -72,7 +72,7 @@ class NewPost extends Component {
                 onChange={(e) => { this.setState({ carbs: e.target.value }) }}
                 style={{ 'text-align': 'center' }}
               />
-            </Form.Group>
+            </Form.Group> */}
           </Form>
           <Link to="/">
             <Button variant="outline-info" type="button" onClick={() => this.handleClick(this.state)}>Submit</Button>

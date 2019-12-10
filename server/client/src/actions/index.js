@@ -6,8 +6,8 @@ export const FETCH_CARBS = "fetch_carbs";
 
 const ROOT_URL = "http://localhost:8000/"
 const CARB_URL = "http://trackapi.nutritionix.com/"
-// app id - fa44ddb5
-// api key - 5ce66a555740cc6569e880c980a80503
+const ID = 'fa44ddb5'
+const KEY = '5ce66a555740cc6569e880c980a80503'
 
 export function fetchData() {
   const request = axios
@@ -36,7 +36,7 @@ export function submitData(values) {
 
 // export function fetchCarbs() {
 //   const request = axios
-//     .get(`${CARB_URL}` ?)
+//     .get(`${CARB_URL}?nf_total_carbohydrate=${ID}${KEY}`)
 //     .catch(function (error) {
 //       console.log('error: ', error);
 //     })

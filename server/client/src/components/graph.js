@@ -13,43 +13,42 @@ class Graph extends Component {
   componentDidMount() {
     this.props.fetchData()
   }
-  constructor() {
-    super()
 
-    this.state = {
-      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-      datasets: [
-        {
-          label: 'highest',
-          fill: false,
-          lineTension: 0.5,
-          backgroundColor: 'white',
-          borderColor: '#FFCBA0',
-          borderWidth: 2,
-          data: [250, 345, 213, 432, 178, 333, 234]
-        },
-        {
-          label: 'lowest',
-          fill: false,
-          lineTension: 0.5,
-          backgroundColor: 'white',
-          borderColor: '#7DAFB8',
-          borderWidth: 2,
-          data: [45, 123, 79, 45, 145, 88, 54]
-        },
-        {
-          label: 'average',
-          fill: false,
-          lineTension: 0.5,
-          backgroundColor: 'white',
-          borderColor: '#B5B0AC',
-          borderWidth: 2,
-          data: [234, 56, 111, 87, 54, 423, 75]
-        }
-      ]
-    }
+  // constructor() {
+  //   super()
 
-  }
+  //   this.state = {
+  //     labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+  //     datasets: [
+  //       {
+  //         label: 'highest',
+  //         fill: false,
+  //         lineTension: 0.5,
+  //         backgroundColor: 'white',
+  //         borderColor: '#FFCBA0',
+  //         borderWidth: 2,
+  //         data: [345, 234, 234, 211, 111, 123, 234]
+  //       },
+  //       {
+  //         label: 'lowest',
+  //         fill: false,
+  //         lineTension: 0.5,
+  //         backgroundColor: 'white',
+  //         borderColor: '#7DAFB8',
+  //         borderWidth: 2,
+  //         data: [45, 123, 79, 45, 145, 88, 54]
+  //       },
+  //       {
+  //         label: 'average',
+  //         fill: false,
+  //         lineTension: 0.5,
+  //         backgroundColor: 'white',
+  //         borderColor: '#B5B0AC',
+  //         borderWidth: 2,
+  //         data: [234, 56, 111, 87, 54, 423, 75]
+  //       }
+  //     ]
+  //   }
 
 
   render() {
@@ -57,11 +56,11 @@ class Graph extends Component {
       <div>
         <div className="container graph-style" id="chart-container">
           <Line
-            data={this.state}
+            data={this.props.data}
             options={{
               title: {
                 display: true,
-                text: 'Blood Glucose Level',
+                text: 'Weekly Stats',
                 fontSize: 20
               },
               legend: {

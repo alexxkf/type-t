@@ -3,10 +3,10 @@ const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
   id: String,
-  bglValue: Number,
+  Value: Number,
   category: String,
-  date: Date,
-  time: Date,
+  Date: String,
+  time: String,
   insulinTaken: Number,
 })
 

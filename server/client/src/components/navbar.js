@@ -6,6 +6,22 @@ import { Link } from "react-router-dom";
 import ChooseDays from './dayPicker'
 
 class Navbar extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      showWeekPicker: false
+    }
+
+    this.showWeekPicker = this.toggleWeekPicker.bind(this)
+  }
+
+  toggleWeekPicker = e => {
+    e.preventDefauly()
+    this.setState({
+      showWeekPicker: !this.state.showWeekPicker
+    })
+  }
 
   render() {
     return (
@@ -23,6 +39,7 @@ class Navbar extends Component {
               </li>
             </ul>
           </div>
+          {/* <div>< ChooseDays /></div> */}
         </nav>
       </div>
     )
