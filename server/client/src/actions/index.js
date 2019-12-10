@@ -1,7 +1,6 @@
 import axios from "axios";
 
 export const FETCH_DATA = "fetch_data";
-export const CREATE_POST = "create_post"
 // export const FETCH_CARBS = "fetch_carbs";
 
 const ROOT_URL = "http://localhost:8000"
@@ -24,11 +23,9 @@ export function fetchData() {
 export function createPost(values, callback) {
   const request = axios.post(`${ROOT_URL}/newPost`, values, {
   });
-
-  request.then(() => callback());
-
+  // request.then(() => callback());
   return {
-    type: CREATE_POST,
+    type: FETCH_DATA,
     payload: request
   };
 }

@@ -10,7 +10,7 @@ const ShowDates = (props) => {
 
   return (
     <div>
-      <Button variant="outline-info mr-4 float-right" size="md" id="Popover1" type="button">
+      <Button variant="outline-info mr-2 float-right" size="md" id="Popover1" type="button">
         Choose Range
       </Button>
       <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>

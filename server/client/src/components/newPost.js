@@ -15,26 +15,30 @@ class NewPost extends Component {
 
     this.state = {
       bgl: '',
-      date: new Date
+      startDate: ''
     }
-    // onChange = e => {
-    //   this.setState({ [e.target.bgl]: e.target.value })
-    // }
 
   }
 
-
-  handleKeyPress = e => {
-    if (e.key === 'Enter') {
-      e.preventDefault()
-      //pressing enter should have the same functionality as calling onSubmit()
-      this.onSubmit(e)
-    }
+  onSubmit = e => {
+    e.preventDefault();
+    let newDate = '';
+    let splitDate = this.state.startDate.split('-')
+    newDate = splitDate[1] + '/' + splitDate[2] + '/' + splitDate[0]
+    this.props.createPost({ Value: this.state.bgl, Date: newDate })
+    this.props.history.push('/')
   }
+
+  onTextChange = e => {
+    this.setState({
+      bgl: e.target.value
+    })
+  }
+
 
   handleChange = date => {
     this.setState({
-      startDate: date
+      startDate: date.target.value
     });
   }
 
@@ -42,28 +46,28 @@ class NewPost extends Component {
     return (
       <div>
         <div className="row">
-          <div className="col-md-6 offset-md-3">
-            <h4 className="text-center">Add New Reading</h4>
+          <div className="text-center col-md-6 offset-md-3">
+            <h4>Add New Reading</h4>
             <form
               name="addPost"
               onSubmit={this.onSubmit}
-              onKeyPress={this.handleKeyPress}
               className="col-md-6 offset-md-3"
             >
               <input
                 label="BGL"
-                name="New BGL"
+                name="/"
                 placeholder="Enter New BGL"
+                onChange={this.onTextChange.bind(this)}
               />
               <br>
               </br>
               <br>
               </br>
-              <DatePicker
-                type="text"
+              <input
+                type="date"
                 placeholder="Entry Date"
-                selected={this.state.startDate}
-                onChange={this.handleChange}
+                // selected={this.state.startDate}
+                onChange={this.handleChange.bind(this)}
                 style={{ 'text-align': 'center' }}
               />
               <br>

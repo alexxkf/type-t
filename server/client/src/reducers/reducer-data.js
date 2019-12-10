@@ -72,13 +72,13 @@ const EMPTY_GRAPH = {
 export default function (state = DEFAULT_STATE, action) {
   switch (action.type) {
     case FETCH_DATA:
-      console.log(action.payload)
+      // console.log(action.payload)
       let retObj = JSON.parse(JSON.stringify(EMPTY_GRAPH));
 
       let daysKeys = Object.keys(action.payload.data);
 
       retObj.labels = daysKeys;
-      console.log("Keys:", daysKeys)
+      // console.log("Keys:", daysKeys)
       retObj.datasets[0].data = [];
       retObj.datasets[1].data = [];
       retObj.datasets[2].data = [];
@@ -88,6 +88,11 @@ export default function (state = DEFAULT_STATE, action) {
         retObj.datasets[1].data.push(action.payload.data[daysKeys[i]].low);
         retObj.datasets[2].data.push(action.payload.data[daysKeys[i]].average);
       }
+
+      retObj.labels = retObj.labels.slice(0, 7)
+      retObj.datasets[0].data = retObj.datasets[0].data.slice(0, 7)
+      retObj.datasets[1].data = retObj.datasets[1].data.slice(0, 7)
+      retObj.datasets[2].data = retObj.datasets[2].data.slice(0, 7)
 
       return retObj
     default:
