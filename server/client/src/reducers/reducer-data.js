@@ -1,7 +1,6 @@
 import _ from "lodash";
 
 import { FETCH_DATA } from "../actions";
-import { SUBMIT_DATA } from "../actions";
 // import { FETCH_CARBS } from "../actions";
 
 const DEFAULT_STATE = {
@@ -91,12 +90,6 @@ export default function (state = DEFAULT_STATE, action) {
       }
 
       return retObj
-
-    case SUBMIT_DATA:
-      console.log(action.payload)
-      return action.payload.data
-    // case FETCH_CARBS:
-    //   return action.payload.data.id
     default:
       return state;
   }

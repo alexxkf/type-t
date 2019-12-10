@@ -1,25 +1,34 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from "redux-form";
+import "../App.css";
+import { Button } from "react-bootstrap";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { submitData } from "../actions/index";
-import { Link } from 'react-router-dom';
-import { Form, Col, Button, Container, Row } from "react-bootstrap";
+import * as actions from '../actions/index';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-
 
 class NewPost extends Component {
   constructor() {
     super()
 
     this.state = {
-      bglValue: '',
-      date: new Date(),
-      carbs: [],
+      bgl: '',
+      date: new Date
+    }
+    // onChange = e => {
+    //   this.setState({ [e.target.bgl]: e.target.value })
+    // }
 
+  }
+
+
+  handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      //pressing enter should have the same functionality as calling onSubmit()
+      this.onSubmit(e)
     }
   }
 
@@ -29,31 +38,24 @@ class NewPost extends Component {
     });
   }
 
-  handleClick(values) {
-    this.props.submitData(values)
-  }
-
-
   render() {
-    console.log('state change', this.state)
+    const { onSubmit } = this.props;
     return (
-      <div className="form" style={{ 'text-align': 'center' }}>
-        <h4>Add New Reading</h4>
-        <div>
-          <Form >
-            <Form.Group controlId="formGroup">
-              <Form.Label >Current Blood Glucose: </Form.Label>
-              <Form.Control
-                size="sm"
-                type="text"
-                placeholder="mg/dL"
-                value={this.state.bglValue}
-                onChange={(e) => { this.setState({ bglValue: e.target.value }) }}
-                style={{ 'text-align': 'center', 'size': 'small' }}
+      <div>
+        <h4 className="text-center">Add New Reading</h4>
+        <div className="col-md-6 offset-md-3">
+          <div className="row">
+            <form
+              name="addPost"
+              onSubmit={this.onSubmit}
+              onKeyPress={this.handleKeyPress}
+              className="offset-md-4"
+            >
+              <input
+                label="BGL"
+                name="New BGL"
+                placeholder="Enter New Blood Glucose"
               />
-            </Form.Group>
-            <Form.Group controlId="formGroup">
-              <Form.Label>Entry Date: </Form.Label>
               <DatePicker
                 type="text"
                 placeholder="Date"
@@ -61,36 +63,25 @@ class NewPost extends Component {
                 onChange={this.handleChange}
                 style={{ 'text-align': 'center' }}
               />
-            </Form.Group>
-            {/* <Form.Group controlId="formGroup">
-              <Form.Label>Food: </Form.Label>
-              <Form.Control
-                size="sm"
-                type="text"
-                placeholder="Search"
-                value={this.state.carbs}
-                onChange={(e) => { this.setState({ carbs: e.target.value }) }}
-                style={{ 'text-align': 'center' }}
-              />
-            </Form.Group> */}
-          </Form>
-          <Link to="/">
-            <Button variant="outline-info" type="button" onClick={() => this.handleClick(this.state)}>Submit</Button>
-          </Link>
+            </form>
+            <div>
+              <a href='/'><Button variant="outline-danger mr-2" size="sm">Cancel</Button></a>
+              <Button type="submit" variant="outline-info mr-2" size="sm">Submit</Button>
+            </div>
+          </div>
         </div>
-      </div >
-    )
-  }
+      </div>
 
-
-}
-
-function mapStateToProps(state) {
-  return { form: state.form };
+    );
+  };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ submitData }, dispatch);
+  return bindActionCreators(actions, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewPost);
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default reduxForm({ form: 'questionNew' })(connect(mapStateToProps, mapDispatchToProps)(NewPost));

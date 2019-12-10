@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@material-ui/core/Icon';
 import ChooseDays from './dayPicker'
-import NewPost from './newPost'
 
 
 
@@ -21,11 +20,6 @@ class Bubbles extends Component {
             </div>
           </div>
         </div>
-        <React.Fragment>
-          <div>
-            <NewPost />
-          </div>
-        </React.Fragment>
       </div>
     )
   }

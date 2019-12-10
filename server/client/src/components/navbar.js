@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import ChooseDays from './dayPicker'
 
 class Navbar extends Component {
@@ -40,6 +41,8 @@ class Navbar extends Component {
             </ul>
           </div>
           {/* <div>< ChooseDays /></div> */}
+          <a href='/newPost'><Button variant="outline-info mr-4 float-right" size="md">Add Reading</Button></a>
+
         </nav>
       </div>
     )
