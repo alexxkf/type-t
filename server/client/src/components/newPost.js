@@ -26,8 +26,7 @@ class NewPost extends Component {
     let newDate = '';
     let splitDate = this.state.startDate.split('-')
     newDate = splitDate[1] + '/' + splitDate[2] + '/' + splitDate[0]
-    this.props.createPost({ Value: this.state.bgl, Date: newDate, Notes: this.state.insulin })
-    this.props.history.push('/')
+    this.props.createPost({ Value: this.state.bgl, Date: newDate, Notes: this.state.insulin }, () => { this.props.history.push('/') })
   }
 
   onTextChange = e => {
