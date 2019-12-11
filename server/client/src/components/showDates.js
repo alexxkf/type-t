@@ -13,7 +13,7 @@ const ShowDates = (props) => {
       <Button variant="outline-info mr-2 float-right" size="md" id="Popover1" type="button">
         Choose Range
       </Button>
-      <Popover placement="bottom" isOpen={popoverOpen} target="Popover1" toggle={toggle}>
+      <Popover placement="bottom" style={{ backGround: '#FFCBA0' }} isOpen={popoverOpen} target="Popover1" toggle={toggle}>
         {/* <PopoverHeader>Popover Title</PopoverHeader> */}
         <PopoverBody>< ChooseDays /></PopoverBody>
       </Popover>

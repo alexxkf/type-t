@@ -15,8 +15,10 @@ class Bubbles extends Component {
         <div className="container" id="bubbles">
           <div className="row" style={{ textAlign: 'center', justifyContent: 'center' }}>
             <div className="col-md-4 box">
-              <h6>Insulin</h6>
-              <p className="text-muted">According to your ratio of 1 unit/mL per 6g/carbs, take {} units/mL</p>
+              {/* <h6>Insulin</h6>
+              <p className="text-muted">According to your ratio of 1 unit/mL per 6g/carbs, take {} units/mL</p> */}
+              <hr></hr>
+              <p className="text-muted" style={{ fontWeight: 'italic' }}>tracking d.mellitus inside us</p>
             </div>
           </div>
         </div>

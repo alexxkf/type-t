@@ -30,6 +30,18 @@ export function createPost(values, callback) {
   };
 }
 
+export function selectWeek() {
+  const request = axios
+    .get(`${ROOT_URL}/`)
+    .catch(function (error) {
+      console.log("error: ", error);
+    });
+  return {
+    type: FETCH_DATA,
+    payload: request
+  }
+}
+
 // export function fetchCarbs() {
 //   const request = axios
 //     .get(`${CARB_URL}?nf_total_carbohydrate=${ID}${KEY}`)

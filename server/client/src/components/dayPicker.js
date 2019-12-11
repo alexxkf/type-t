@@ -28,10 +28,16 @@ function getWeekRange(date) {
 }
 
 class ChooseDays extends Component {
-  state = {
-    hoverRange: undefined,
-    selectedDays: [],
-  };
+  constructor() {
+    super()
+
+    this.state = {
+      bgl: '',
+      hoverRange: undefined,
+      selectedDays: [],
+
+    }
+  }
 
   handleDayChange = date => {
     this.setState({
@@ -48,14 +54,21 @@ class ChooseDays extends Component {
   handleDayLeave = () => {
     this.setState({
       hoverRange: undefined,
-    });
-  };
+    })
+  }
 
   handleWeekClick = (weekNumber, days, e) => {
     this.setState({
       selectedDays: days,
-    });
-  };
+    })
+  }
+
+  onSubmit = e => {
+    e.preventDefault();
+    this.props.selectWeek({ Value: this.state.bgl, Date: this.state.selectedDays })
+    this.props.history.push('/')
+  }
+
 
   render() {
     const { hoverRange, selectedDays } = this.state;
@@ -85,6 +98,7 @@ class ChooseDays extends Component {
           onDayMouseEnter={this.handleDayEnter}
           onDayMouseLeave={this.handleDayLeave}
           onWeekClick={this.handleWeekClick}
+          onSubmit={this.onSubmit}
         />
         {selectedDays.length === 7 && (
           <div>
@@ -110,20 +124,20 @@ class ChooseDays extends Component {
             }
 
             .SelectedWeekExample .DayPicker-Day--selectedRange {
-              background-color: #fff7ba !important;
+              background-color: #CDFBEB!important;
               border-top-color: #FFEB3B;
               border-bottom-color: #FFEB3B;
-              border-left-color: #fff7ba;
-              border-right-color: #fff7ba;
+              border-left-color: #CDFBEB;
+              border-right-color: #CDFBEB;
             }
 
             .SelectedWeekExample .DayPicker-Day--selectedRangeStart {
-              background-color: #FFEB3B !important;
+              background-color: #CDFBEB !important;
               border-left: 1px solid #FFEB3B;
             }
 
             .SelectedWeekExample .DayPicker-Day--selectedRangeEnd {
-              background-color: #FFEB3B !important;
+              background-color: #CDFBEB !important;
               border-right: 1px solid #FFEB3B;
             }
 

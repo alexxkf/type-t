@@ -38,9 +38,9 @@ class Graph extends Component {
                   xScaleID: "x-axis-0",
                   yScaleID: "y-axis-0",
                   borderWidth: 0,
-                  yMin: 70,
-                  yMax: 180,
-                  backgroundColor: 'rgba(60, 179, 113, 0.3)'
+                  yMin: 75,
+                  yMax: 150,
+                  backgroundColor: 'rgba(60, 179, 113, 0.2)'
                 }]
               }
             }}
