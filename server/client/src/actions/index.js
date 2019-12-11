@@ -4,7 +4,7 @@ export const FETCH_DATA = "fetch_data";
 export const FETCH_INSULIN_DATA = "fetch_insulin_data"
 
 
-const ROOT_URL = "http://localhost:8000"
+const ROOT_URL = ""
 
 
 export function fetchData() {
