@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import Chart from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import _ from 'lodash'
-import Bubbles from './bubbles'
+import InsulinGraph from './insulinGraph'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { fetchData } from '../actions'
@@ -46,7 +46,7 @@ class Graph extends Component {
             }}
           />
           <div>
-            <Bubbles />
+            <InsulinGraph />
           </div>
         </div >
       </div >

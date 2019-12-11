@@ -74,7 +74,6 @@ export default function (state = DEFAULT_STATE, action) {
     case FETCH_DATA:
       // console.log(action.payload)
       let retObj = JSON.parse(JSON.stringify(EMPTY_GRAPH));
-
       let daysKeys = Object.keys(action.payload.data);
 
       retObj.labels = daysKeys;

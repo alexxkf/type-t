@@ -15,6 +15,7 @@ class NewPost extends Component {
 
     this.state = {
       bgl: '',
+      insulin: '',
       startDate: ''
     }
 
@@ -25,13 +26,19 @@ class NewPost extends Component {
     let newDate = '';
     let splitDate = this.state.startDate.split('-')
     newDate = splitDate[1] + '/' + splitDate[2] + '/' + splitDate[0]
-    this.props.createPost({ Value: this.state.bgl, Date: newDate })
+    this.props.createPost({ Value: this.state.bgl, Date: newDate, Notes: this.state.insulin })
     this.props.history.push('/')
   }
 
   onTextChange = e => {
     this.setState({
-      bgl: e.target.value
+      bgl: e.target.value,
+    })
+  }
+
+  onInsulinChange = e => {
+    this.setState({
+      insulin: e.target.value
     })
   }
 
@@ -55,9 +62,19 @@ class NewPost extends Component {
             >
               <input
                 label="BGL"
-                name="/"
-                placeholder="Enter New BGL"
+                name="/bgl"
+                placeholder="New BGL mg/dL"
                 onChange={this.onTextChange.bind(this)}
+              />
+              <br>
+              </br>
+              <br>
+              </br>
+              <input
+                label="insulin"
+                name="/insulin"
+                placeholder="Insulin units/mL"
+                onChange={this.onInsulinChange.bind(this)}
               />
               <br>
               </br>

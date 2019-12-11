@@ -22,7 +22,7 @@ class Navbar extends Component {
             </ul>
           </div>
           <div>
-            < ShowDates />
+            {/* < ShowDates /> */}
           </div>
           <a href='/newPost'><Button variant="outline-info mr-2 float-right" size="md">Add Reading</Button></a>
 

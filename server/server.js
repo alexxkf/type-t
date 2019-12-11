@@ -23,7 +23,6 @@ app.use(bodyParser.json())
 
 const mainRoutes = require('./routes/main')
 
-
 app.use('/', mainRoutes)
 
 

@@ -1,0 +1,9 @@
+.bar-style {
+	margin-top: 80px;
+}
+
+#bar-container {
+  height : 500px;
+  width: 700px;
+  justify-content: center;
+}

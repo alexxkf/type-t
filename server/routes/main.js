@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const User = require("../models/user");
 
-router.get('/', (req, res) => {
+const getGraphData = (res) => {
+
   User.find()
-    .sort({ dateAdded: "asc" })
+    .sort({ Date: "desc" })
     .exec((err, user) => {
       if (err) {
         console.log(err);
@@ -34,43 +35,70 @@ router.get('/', (req, res) => {
         for (i = 0; i < daysKeys.length; i++) {
           days[daysKeys[i]].average /= days[daysKeys[i]].numItems
         }
-
-
-        // let high = 0
-        // let low = 1000
-        // let average = 0
-
-        // for (i = 0; i < user.length; i++) {
-        //   if (user[i].Value > high) {
-        //     high = user[i].Value
-        //   }
-        //   if (user[i].Value < low) {
-        //     low = user[i].Value
-        //   }
-        //   average += user[i].Value
-        // }
-        // average = average / user.length
         res.send(days)
       }
+    });
+}
 
+router.get('/bgl', (req, res) => {
+  getGraphData(res)
 
-    })
 });
 
+router.get('/insulin', (req, res) => {
+  User.find()
+    .sort({ Date: "desc" })
+    .exec((err, user) => {
+      if (err) {
+        console.log(err);
+      } else {
+        let daysI = {};
+
+        for (i = 0; i < user.length; i++) {
+
+          if (user[i].Date) {
+            console.log('pre-add', daysI)
+            if (!daysI[user[i].Date]) {
+              console.log('post', user[i].Date)
+              daysI[user[i].Date] = { total: 0, numItems: 0 };
+            }
+
+            // if (user[i].Notes > days[user[i].Date].high) {
+            //   days[user[i].Date].high = user[i].Value
+            // }
+
+            // if (user[i].Notes < days[user[i].Date].low) {
+            //   days[user[i].Date].low = user[i].Value
+
+
+            daysI[user[i].Date].total += user[i].Notes
+            daysI[user[i].Date].numItems++;
+          }
+        }
+
+        let daysIKeys = Object.keys(daysI);
+        for (i = 0; i < daysIKeys.length; i++) {
+          daysI[daysIKeys[i]].total += daysI[daysIKeys[i]].numItems
+        }
+        res.send(daysI)
+      }
+    }
+    )
+});
+
+
 // creates new post
-router.post('/', (req, res) => {
-  let insulin = bglValue - 100 / 50
-  const newPost = new Post({
-    bgl: req.body.Value,
-    day: req.body.date,
-    carbs: []
-  })
+router.post('/newPost', (req, res) => {
+  let newPost = new User()
+
+  newPost.Value = req.body.Value
+  newPost.Date = req.body.Date
+  newPost.Notes = req.body.Notes
 
   newPost.save((err) => {
     if (err) throw (err)
+    getGraphData(res)
   })
-
-  res.send(`New BGL has been added! ${newPost}`)
 
 })
 
