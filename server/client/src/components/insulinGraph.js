@@ -21,7 +21,7 @@ class InsulinGraph extends Component {
             options={{
               title: {
                 display: true,
-                text: '',
+                text: 'Daily Insulin Intake',
                 fontSize: 20
               },
               legend: {

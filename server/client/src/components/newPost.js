@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as actions from '../actions/index';
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./newPost.css";
 import 'bootstrap/dist/css/bootstrap.min.css';

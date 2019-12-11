@@ -20,7 +20,7 @@ const EMPTY_INSULIN_GRAPH = {
   labels: [],
   datasets: [
     {
-      label: 'Daily Insulin Intake',
+      label: 'units/mL',
       fill: false,
       lineTension: 0.5,
       backgroundColor: 'rgba(181,176,172,0.4)',
@@ -37,7 +37,7 @@ export default function (state = STATE, action) {
       console.log('data received', action.payload)
       if (action.payload && action.payload.data) {
         let retObjInsulin = JSON.parse(JSON.stringify(EMPTY_INSULIN_GRAPH));
-        console.log('reducer', action.payload.data)
+        console.log('insulinReducer', action.payload.data)
         let daysIKeys = Object.keys(action.payload.data);
 
         retObjInsulin.labels = daysIKeys;
@@ -50,6 +50,7 @@ export default function (state = STATE, action) {
         retObjInsulin.labels = retObjInsulin.labels.slice(0, 7)
         retObjInsulin.datasets[0].data = retObjInsulin.datasets[0].data.slice(0, 7)
 
+        console.log('retObjInsulin', retObjInsulin)
         return retObjInsulin
       }
       return state;

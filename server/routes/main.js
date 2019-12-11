@@ -34,6 +34,7 @@ const getGraphData = (res) => {
         let daysKeys = Object.keys(days);
         for (i = 0; i < daysKeys.length; i++) {
           days[daysKeys[i]].average /= days[daysKeys[i]].numItems
+          days[daysKeys[i]].average = Math.trunc(days[daysKeys[i]].average)
         }
         res.send(days)
       }
@@ -56,21 +57,12 @@ router.get('/insulin', (req, res) => {
 
         for (i = 0; i < user.length; i++) {
 
-          if (user[i].Date) {
-            console.log('pre-add', daysI)
+          if (user[i].Date && user[i].Notes) {
+            // console.log('pre-add', daysI)
             if (!daysI[user[i].Date]) {
-              console.log('post', user[i].Date)
+              // console.log('post', user[i].Date)
               daysI[user[i].Date] = { total: 0, numItems: 0 };
             }
-
-            // if (user[i].Notes > days[user[i].Date].high) {
-            //   days[user[i].Date].high = user[i].Value
-            // }
-
-            // if (user[i].Notes < days[user[i].Date].low) {
-            //   days[user[i].Date].low = user[i].Value
-
-
             daysI[user[i].Date].total += user[i].Notes
             daysI[user[i].Date].numItems++;
           }
@@ -80,6 +72,7 @@ router.get('/insulin', (req, res) => {
         for (i = 0; i < daysIKeys.length; i++) {
           daysI[daysIKeys[i]].total += daysI[daysIKeys[i]].numItems
         }
+        console.log('insulin route', daysI)
         res.send(daysI)
       }
     }
