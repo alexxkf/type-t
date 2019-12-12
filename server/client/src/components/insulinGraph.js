@@ -4,6 +4,7 @@ import { fetchInsulinData } from '../actions'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import './insulinGraph.css'
+import Bubbles from './bubbles'
 
 
 class InsulinGraph extends Component {
@@ -31,6 +32,7 @@ class InsulinGraph extends Component {
               }
             }}
           />
+          < Bubbles />
         </div>
       </div>
     );
