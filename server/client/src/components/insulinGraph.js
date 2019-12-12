@@ -14,7 +14,7 @@ class InsulinGraph extends Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <div className="container bar-style" id="bar-container">
           <Bar
             data={this.props.insulin}
@@ -22,7 +22,7 @@ class InsulinGraph extends Component {
               title: {
                 display: true,
                 text: 'Daily Insulin Intake',
-                fontSize: 20
+                fontSize: 20,
               },
               legend: {
                 display: true,

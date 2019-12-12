@@ -25,7 +25,9 @@ class Graph extends Component {
               title: {
                 display: true,
                 text: 'Weekly Stats',
-                fontSize: 20
+                fontSize: 20,
+                responsive: true,
+                maintainAspectRatio: false
               },
               legend: {
                 display: true,

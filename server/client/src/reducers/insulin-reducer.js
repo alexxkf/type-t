@@ -8,7 +8,7 @@ const STATE = {
     {
       label: 'Total Insulin Intake',
       backgroundColor: 'rgba(181,176,172,0.4)',
-      borderColor: 'rgba(181,176,172,0.4)',
+      borderColor: '#B5B0AC',
       borderWidth: 2,
       data: [10, 8, 15, 16, 12, 20, 19]
     }

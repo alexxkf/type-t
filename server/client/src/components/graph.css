@@ -1,3 +1,10 @@
 .graph-style {
 	margin-top: 80px;
 }
+
+
+#chart-container {
+  height: 600px !important;
+	justify-content: center;
+	
+}
