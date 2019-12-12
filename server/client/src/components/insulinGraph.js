@@ -14,7 +14,7 @@ class InsulinGraph extends Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div>
         <div className="container bar-style" id="bar-container">
           <Bar
             data={this.props.insulin}
@@ -26,7 +26,8 @@ class InsulinGraph extends Component {
               },
               legend: {
                 display: true,
-                position: 'top'
+                position: 'top',
+                responsive: true
               }
             }}
           />

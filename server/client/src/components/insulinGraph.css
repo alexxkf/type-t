@@ -1,6 +1,5 @@
-.wrapper {
-  height: 500px !important;
-  margin-top: 40px;
+#bar-container {
+  height: 600px;
   justify-content: center;
 }
 
